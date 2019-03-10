@@ -105,7 +105,9 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
         Log.d(getString(R.string.app_name), String.format("Requesting updates every %d milliseoncds", minTime));
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, 10, this);
 
-        final LocationRequest locationRequest = LocationRequest.create().setFastestInterval(minTime);
+        final LocationRequest locationRequest = LocationRequest.create()
+                .setSmallestDisplacement(10)
+                .setFastestInterval(minTime);
         LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, locationCallback, null);
     }
 

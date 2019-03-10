@@ -101,7 +101,7 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
             return;
         }
 
-        int minTime = 60000;
+        int minTime = 5000;
         Log.d(getString(R.string.app_name), String.format("Requesting updates every %d milliseoncds", minTime));
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, 10, this);
 
@@ -130,7 +130,7 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
             if (isDestroyed) return;
 
 
-            Log.d("onLocationChanged", String.format("Now at %.4f, %.4f", location.getLatitude(), location.getLongitude()));
+            Log.d("onLocationChanged", String.format("Now at %.5f, %.5f", location.getLatitude(), location.getLongitude()));
 
         } catch (final Exception e) {
             Log.e(getString(R.string.app_name), "Exception in onLocationChanged", e);

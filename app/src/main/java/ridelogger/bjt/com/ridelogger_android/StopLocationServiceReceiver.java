@@ -11,7 +11,7 @@ public class StopLocationServiceReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction().equals(C.REQUEST_STOP_RIDELOGGER_LOCATION_SERVICE_ACTION)) {
-            Log.d("DebugLog", "GeoRadioStopServiceReceiver.onReceive");
+            Log.d(context.getString(R.string.app_name), "GeoRadioStopServiceReceiver.onReceive");
             Intent serviceIntent = new Intent(context, LocationService.class);
             context.stopService(serviceIntent);
         }

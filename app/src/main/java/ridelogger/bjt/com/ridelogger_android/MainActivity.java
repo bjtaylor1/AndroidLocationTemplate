@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         hasPermission(Manifest.permission.INTERNET)
                 ) {
 
-            Log.d("DebugLog", "startButtonClick");
+            Log.d(getString(R.string.app_name), "startButtonClick");
             if(checkPlayServices()) {
                 startLocationService();
             }
@@ -76,7 +77,11 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getSize(point);
         final Intent serviceIntent = new Intent(this, LocationService.class);
         serviceIntent.setAction(C.ACTION_START_RIDELOGGER_LOCATION_SERVICE);
-        startForegroundService(serviceIntent);
+        if(Build.VERSION.SDK_INT >= 26) {
+            startForegroundService(serviceIntent);
+        } else{
+            startService(serviceIntent);
+        }
     }
 
     private boolean hasPermission(String perm) {

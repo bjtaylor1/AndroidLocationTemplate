@@ -56,14 +56,19 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
 
     @Override
     public void onCreate() {
-        Log.i("InfoLog", "onCreate");
+        try {
+            Log.i(getString(R.string.app_name), "onCreate");
 
-        super.onCreate();
-        createNotification();
-        registerForLocationUpdates();
+            super.onCreate();
+            createNotification();
+            registerForLocationUpdates();
 
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        defaultSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+            final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            defaultSharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        }
+        catch(final Exception ex) {
+            Log.e(getString(R.string.app_name), ex.getClass().getName(), ex);
+        }
     }
 
     private void createNotification() {
@@ -86,7 +91,7 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
             startForeground(1, notification);
         }
 
-        Log.d("DebugLog", "called startForeground");
+        Log.d(getString(R.string.app_name), "done createNotification");
     }
 
     private void registerForLocationUpdates() {
@@ -97,7 +102,7 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
         }
 
         int minTime = 60000;
-        Log.d("DebugLog", String.format("Requesting updates every %d milliseoncds", minTime));
+        Log.d(getString(R.string.app_name), String.format("Requesting updates every %d milliseoncds", minTime));
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, 10, this);
 
         final LocationRequest locationRequest = LocationRequest.create().setFastestInterval(minTime);
@@ -125,10 +130,10 @@ implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener 
             if (isDestroyed) return;
 
 
-            Log.d("onLocationChanged", String.format("Now at %.f, %.f", location.getLatitude(), location.getLongitude()));
+            Log.d("onLocationChanged", String.format("Now at %.4f, %.4f", location.getLatitude(), location.getLongitude()));
 
         } catch (final Exception e) {
-            Log.e("ErrorLog", "Exception in onLocationChanged", e);
+            Log.e(getString(R.string.app_name), "Exception in onLocationChanged", e);
         }
     }
 

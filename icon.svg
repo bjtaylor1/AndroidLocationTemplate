@@ -1,10 +1,10 @@
-<svg viewBox="-80 -30 470 470" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-178 -80 575 575" xmlns="http://www.w3.org/2000/svg">
   <!--<rect x="-80" y="-30" width="470" height="470" fill="black"></rect>-->
   <!-- Simple color stroke -->
  <g stroke="#162e9e"  fill="#162e9e">
- <path d="M 70.096 275 A 150 150 1 1 1 200 350" stroke="#162e9e" fill="none" stroke-width="75" stroke-linecap="round"/>
- <circle cx="120" cy="350" r="37.5" stroke-width="0"/>
- <circle cx="40" cy="350" r="37.5" stroke-width="0"/>
- <circle cx="-40" cy="350" r="37.5" stroke-width="0"/>
+ <path d="M 55.11 238.82 A 150 150 1 1 1 200 350" stroke="#162e9e" fill="none" stroke-width="75" stroke-linecap="round"/>
+ <circle cx="80" cy="350" r="37.5" stroke-width="0"/>
+ <circle cx="-30" cy="350" r="37.5" stroke-width="0"/>
+ <circle cx="-140" cy="350" r="37.5" stroke-width="0"/>
  </g>
 </svg>
